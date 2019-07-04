@@ -1,0 +1,56 @@
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+pip-selfcheck.json
+
+# Unit test / coverage reports
+.coverage
+.tox
+htmlcov
+lizard_ext
+.hypothesis
+
+# mypy
+.mypy_cache
+
+# Translations
+*.mo
+
+# Virtualenv
+venv
+virtualenv
+include
+lib
+lib64
+local
+man
+share
+Scripts
+pyvenv.cfg
+.Python
+
+# MacOSX
+.DS_Store
+
+# Vagrant
+.vagrant*
+
+# tmp files:
+*.swp
+
+# local settings
+local_settings.py
