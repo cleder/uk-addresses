@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+"""FHRS API"""
 
 import json
 import requests
 
-from pygeoif import geometry
+from django.contrib.gis import geos
 
 base_url = 'http://api.ratings.food.gov.uk/'
 headers = {
@@ -13,7 +14,7 @@ headers = {
 
 FIELDS = {
     'external_id': 'FHRSID',
-    'name:': 'BusinessName',
+    'name': 'BusinessName',
     'address_type': 'BusinessType',
     'address_line1': 'AddressLine1',
     'address_line2': 'AddressLine2',
@@ -40,7 +41,7 @@ def _to_geometry(geocode):
     lat = geocode.get('latitude', 0)
     lon = geocode.get('longitude', 0)
     if lat or lon:
-        return geometry.Point(float(lon), float(lat))
+        return geos.Point(float(lon), float(lat))
 
 
 def parse_establishment(establishment):
@@ -62,4 +63,3 @@ def get_authorities_basic():
     response.raise_for_status()
     print(response.json()['meta']['totalPages'])
     return response.json()['authorities']
-

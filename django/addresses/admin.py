@@ -5,4 +5,10 @@ from django.contrib.gis import admin
 
 from .models import Address
 
-admin.site.register(Address, admin.OSMGeoAdmin)
+@admin.register(Address)
+class AuthorAdmin(admin.OSMGeoAdmin):
+    """Address admin."""
+
+    list_display = ('postcode', 'source')
+    list_filter = ('source', )
+    search_fields = ['postcode']
