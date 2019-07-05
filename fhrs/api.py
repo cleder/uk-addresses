@@ -12,14 +12,15 @@ headers = {
 }
 
 FIELDS = {
-    'fhrs_id': 'FHRSID',
-    'business_name:': 'BusinessName',
-    'business_type': 'BusinessType',
+    'external_id': 'FHRSID',
+    'name:': 'BusinessName',
+    'address_type': 'BusinessType',
     'address_line1': 'AddressLine1',
-    'address_line1': 'AddressLine2',
-    'address_line1': 'AddressLine3',
-    'address_line1': 'AddressLine4',
+    'address_line2': 'AddressLine2',
+    'address_line3': 'AddressLine3',
+    'address_line4': 'AddressLine4',
     'postcode': 'PostCode',
+    'phone': 'Phone',
 }
 
 
@@ -46,7 +47,7 @@ def parse_establishment(establishment):
     point = None
     if establishment.get('geocode', None):
         point = _to_geometry(establishment['geocode'])
-    simplified = {}
+    simplified = {'source': 'FHRS'}
     for f in FIELDS.keys():
         simplified[f] = establishment[FIELDS[f]]
     simplified['location'] = point

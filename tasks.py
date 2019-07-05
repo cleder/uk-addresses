@@ -5,7 +5,7 @@ from invoke import task
 
 PROJECT_DIR = os.path.dirname(__file__)
 DB_NAME = 'uk_addresses'
-DB_USER = 'django_addr'
+DB_USER = 'vagrant'
 
 @task
 def createdb(ctx):
